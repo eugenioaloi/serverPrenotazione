@@ -1,24 +1,14 @@
-package com.entity;
+package com.dto;
 
-import java.io.Serializable;
+import java.beans.JavaBean;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Builder;
+//Annotazioni lombok non funzionanti: getter-setter-data
+//FIXME: aggiungere Lombok alle dependencies, ora è solo attaccato alle librerie
 
-@Entity
-@Table(name="users")
-public class User implements Serializable{
+@JavaBean
+public class UserBean {
 	
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	  
 	private String name;
@@ -33,9 +23,7 @@ public class User implements Serializable{
 	
 	private String password;
 	
-	@Column(name="created_at")
-	@Builder.Default
-	private LocalDateTime created_at = LocalDateTime.now();
+	private LocalDateTime created_at;
 	
 	private String updated_at;
 
